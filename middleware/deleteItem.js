@@ -12,9 +12,9 @@ function deleteItem(req, res, next) {
         const item = checkIfItemExists(result, req.body, res);
 
         if (!item.statusCode) {
-            const updatedData = result.filter(item => item.id !== req.body.id);
+            const updatedData = result.filter(entry => entry.id !== req.body.id);
             writeToDisk(updatedData);
-            res.status(204).json({message: 'Entry Deleted Successfully', entry: item}); 
+            return res.status(200).json({message: 'Item Deleted Successfully', item}); 
         }
     } 
     catch (error) {

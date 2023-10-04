@@ -11,7 +11,9 @@ function checkIfItemExists(data, req, res) {
     if (!item) {
         return res.status(404).json({ message: 'Item not found' });
     }
-    return item;
+    else {
+        return item;
+    }
 }
 
 module.exports = checkIfItemExists

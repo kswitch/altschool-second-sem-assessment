@@ -8,6 +8,7 @@ const app = express();
 const adminRoutes = require('./routes/admin');
 const userRoutes = require('./routes/user');
 const file = require('./utils/paths');
+
 const jsonParser = bodyParser.json();
 const port = 3000;
 
