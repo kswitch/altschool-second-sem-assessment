@@ -6,8 +6,8 @@ function checkIfItemExists(data, req, res) {
         For now we would workd with just the ID
     */
 
-    const itemId = req.id;
-    const item = data.find((item) => item.id === itemId);
+    const {id} = req.query;
+    const item = data.find((item) => item.id === id);
     if (!item) {
         return res.status(404).json({ message: 'Item not found' });
     }

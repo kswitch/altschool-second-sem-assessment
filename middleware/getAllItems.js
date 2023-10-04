@@ -12,7 +12,7 @@ function getAllItems(req, res, next) {
             res.status(200).type('application/json').send(result);
         }
         else {
-            const output = checkIfItemExists(result, req.query, res)
+            const output = checkIfItemExists(result, req, res)
             res.status(200).type('application/json').send(output);
         }
     } 

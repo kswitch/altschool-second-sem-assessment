@@ -9,10 +9,11 @@ function deleteItem(req, res, next) {
     try {
         const data = readFromDisk();
         const result = JSON.parse(data);
-        const item = checkIfItemExists(result, req.body, res);
+        const item = checkIfItemExists(result, req, res);
+        const {id} = req.query
 
         if (!item.statusCode) {
-            const updatedData = result.filter(entry => entry.id !== req.body.id);
+            const updatedData = result.filter(item => item.id !== id);
             writeToDisk(updatedData);
             return res.status(200).json({message: 'Item Deleted Successfully', item}); 
         }

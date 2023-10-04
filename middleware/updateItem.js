@@ -17,12 +17,13 @@ function updateItem(req, res, next) {
     try {
         const data = readFromDisk();
         const result = JSON.parse(data);
-        const item = checkIfItemExists(result, req.query, res);
+        const item = checkIfItemExists(result, req, res);
+        const { id } = req.query
 
         const updatedItem = { ...req.body};
 
         if (!item.statusCode) {
-            const index = result.findIndex((item) => item.id === req.query.id);
+            const index = result.findIndex((item) => item.id === id);
             result[index] = {...result[index], ...updatedItem};
             writeToDisk(result);
             return res.status(200).json({message: 'Item Updated Successfully', entry: result[index]}); 
